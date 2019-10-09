@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				background: red;
+			}
+			ul{
+				list-style: none;
+			}
+			#header{
+				width: 800px;
+				height: 100px;
+				position: fixed;
+				left:50%;
+				top: 0;
+				transform: translateX(-50%);
+			}
+			ul{
+				width: 700px;
+				height: 90px;
+				border: 1px solid #C12E2A;
+				margin: 3px auto;
+				padding: 0;
+				position: relative;
+			}
+			li{
+				width: 138px;
+				height: 100%;
+				border: 1px solid #000000;
+				float: left;
+				cursor: pointer;
+			}
+			li:nth-child(1){
+				background-color: red;
+			}
+			li:nth-child(2){
+				background-color: yellow;
+			}
+			li:nth-child(3){
+				background-color: blue;
+			}
+			li:nth-child(4){
+				background-color: pink;
+			}
+			li:nth-child(5){
+				background-color:green;
+			}
+			li:nth-child(1){
+				background: red;
+			}
+			.bg{
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba(255,255,255,0.4);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li class="bg">
+				</li>
+			</ul>
+		</div>
+		<script>
+			window.onload=function(){
+				var li=document.getElementsByTagName('li');
+				var header=document.getElementById('header');
+				var z=document.querySelector('.bg');
+				for(let i=0;i<li.length-1;i++){
+					//给每个li定义index属性并且赋值
+					li[i].index=i;
+					//给每个li点击事件
+					li[i].addEventListener('mouseover',overe)
+					function overe(){
+						//获取外部背景颜色
+						var bg=window.getComputedStyle(this, null).getPropertyValue("background-color");
+						//设置背景颜色
+						document.body.style.backgroundColor=bg;
+						//遮盖
+						z.style.left=(this.index*140)+'px'
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
