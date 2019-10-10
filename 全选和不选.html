@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#all{
+				margin-bottom: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<table>
+				<input type="checkbox" id="all" />
+				<label for="all">全选</label>
+			</table>
+		</div>
+		<div id="tab">
+			<input type="checkbox" id='basketball' value="篮球"/>
+			<label for="basketball">篮球</label>
+			<input type="checkbox" id='football' value="足球" />
+			<label for="football">足球</label>
+			<input type="checkbox" id='badminton' value="羽毛球"/>
+			<label for="badminton">羽毛球</label>
+			<input type="checkbox" id='sig' value="唱歌"/>
+			<label for="sig">唱歌</label>
+			<input type="checkbox" id='dance' value="跳舞"/>
+			<label for="dance">跳舞</label>
+		</div>
+		
+		<script>
+			window.onload=function(){
+				//获取全选
+				var all=document.getElementById('all');
+				var tab=document.getElementById('tab');
+				//获取全部爱好
+				var checkbox=tab.getElementsByTagName('input');
+				//全选点击事件
+				all.onclick=function(){
+					for(var i=0;i<checkbox.length;i++){
+						checkbox[i].checked=this.checked;
+					}
+				}
+				
+				for(var i=0;i<checkbox.length;i++){
+					//选择爱好事件
+					checkbox[i].onclick=function(){
+						//勾选的总数
+						var coum=0;
+						for(var j=0;j<checkbox.length;j++){
+							//判断是否全部勾选
+							if(checkbox[j].checked){
+								coum++;
+							}
+						}
+						all.checked=(coum==checkbox.length);
+						
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
