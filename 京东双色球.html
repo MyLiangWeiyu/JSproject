@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h3>京东双色球</h3>
+		<h2></h2>
+		<button>点击投注</button>
+		<script>
+			
+			var h5=document.getElementsByTagName('h2')[0];
+			var btn=document.getElementsByTagName('button')[0];
+			//目标生成 一组 1-33 之间的随机数不重复整数
+			/*
+			1.生成一个1-33之间的整数
+			2.生成7个数
+			3.要求不重复
+			*/
+		   
+		   //生成随机函数
+		   function rnd(m,n){
+			   var number=n-m+1;
+			   return parseInt(Math.random()*number+m);
+		   }
+		   
+		  //判断数组的数是否重复,去除重复数
+		  function isFindArr(arr,num){
+			  for(var i=0;i<arr.length;i++){
+				  //有重复的数,则返回false
+				  if(arr[i]==num){
+					  return false;
+				  }  
+			  }
+			  return true;
+		  }
+		 //判断是否为两位数
+		 function isNumber(m){
+			 return m>=10?m:'0'+m;
+		 }
+		 
+		  //随机数1到33,生成7个数
+		  
+		 //点击投注
+		 betting()
+		 function betting(){
+			var arr=[];
+			while (arr.length<7){
+				var iNum=rnd(1,33);
+				if(isFindArr(arr,iNum)){
+					arr.push(isNumber(iNum))
+				}
+				}
+			h5.innerHTML=arr;
+		 }
+		 btn.onclick=betting;
+		</script>
+	</body>
+</html>
