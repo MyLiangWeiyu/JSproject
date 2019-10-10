@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h3></h3>
+		<script>
+			window.onload=function(){
+				var h3=document.getElementsByTagName('h3')[0];
+				//判断两位数
+				function inNumber(m){
+					return m>=10?m:'0'+m;
+				}
+				//星期数
+				var data=['日','一','二','三','四','五','六'];
+				function onDate(){
+					var doDate=new Date();
+					var year=doDate.getFullYear();
+					var month=doDate.getMonth()+1;
+					var date=doDate.getDate();
+					var day=doDate.getDay()
+					
+					var h=doDate.getHours();
+					var min=doDate.getMinutes();
+					var s=doDate.getSeconds()
+					h3.innerHTML=year+'年'+inNumber(month)+'月'+inNumber(date)+'日 '+'星期'+data[day]+' '+inNumber(h)+':'+inNumber(min)+':'+inNumber(s)
+				}
+				
+				onDate()
+				setInterval(onDate,1000)
+			}
+		</script>
+	</body>
+</html>
